@@ -28,27 +28,101 @@
   color: #61dafb;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+.App > form:nth-child(3) {
+margin-top: 40px;
 }
-/* th, td {
-  padding: 0.25rem;
-  text-align: left;
-  border: 1px solid #ccc;
-} */
-tbody tr:nth-child(odd) {
-  background: #eee;
+
+.wrapper {
+	max-width: 1280px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* spacing */
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  /* border: 5px solid #e5f5ff; */
+}
+
+thead th:nth-child(1) {
+  width: 20%;
+}
+
+thead th:nth-child(2) {
+  width: 35%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+thead th:nth-child(4) {
+  width: 20%;
+}
+
+thead th:nth-child(5) {
+  width: 10%;
 }
 
 th, td {
-  display: inline;
+  padding: 20px;
+}
+
+/* typography */
+
+html {
+  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+}
+
+thead th, tfoot th {
+     font-family: 'Roboto', sans-serif;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+/* zebra striping */
+
+thead {
+	background-color: #508abb;
+	color: #fffffc;
+}
+
+tbody {
+	color: black;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f4fbff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 780px) {
+  tbody tr:hover {
+	/* your hover state style rules */
+	background-color: yellow;
+  }
 }
 
 /* RESPONSIVE TABLE DESIGN  */
 
 
- .rwd-table {
+ /* .rwd-table {
 	 margin: 1em 0;
 	 min-width: 300px;
 }
@@ -113,6 +187,7 @@ th, td {
 	 border-radius: 0.4em;
 	 overflow: hidden;
 }
+
  .rwd-table tr {
 	 border-color: #46637f;
 }
@@ -127,4 +202,4 @@ th, td {
  .rwd-table th, .rwd-table td:before {
 	 color: #dd5;
 }
- 
+  */

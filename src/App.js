@@ -1,7 +1,7 @@
-import { Component } from 'react';
-import Ticket from './Ticket';
-import firebase from './firebase';
-import './App.css';
+import { Component } from "react";
+import Ticket from "./Ticket";
+import firebase from "./firebase";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -10,9 +10,9 @@ class App extends Component {
     this.state = {
       tickets: [],
       ticketRequester: "",
-      ticketSubject: "",
       ticketDescription: "",
       ticketPriority: "",
+      ticketDate: "",
     };
   }
 
@@ -30,9 +30,9 @@ class App extends Component {
         const formattedObj = {
           id: ticketKey,
           name: propertyVal.name,
-          subject: propertyVal.subject,
           description: propertyVal.description,
           priority: propertyVal.priority,
+          date: propertyVal.date,
         };
 
         ticketsArray.push(formattedObj);
@@ -52,12 +52,6 @@ class App extends Component {
     });
   };
 
-  onChangeTicketSubject = (event) => {
-    this.setState({
-      ticketSubject: event.target.value,
-    });
-  };
-
   onChangeTicketDescription = (event) => {
     this.setState({
       ticketDescription: event.target.value,
@@ -70,47 +64,67 @@ class App extends Component {
     });
   };
 
+  onSubmitTimestamp () {
+    let timestamp = new Date();
+    let formatDate = [];
+
+    let month = timestamp.getMonth() + 1;
+    let day = timestamp.getDate();
+    let year = timestamp.getFullYear();
+    let hour = timestamp.getHours();
+    let minutes = timestamp.getMinutes();
+    let seconds = timestamp.getSeconds();
+
+    formatDate = [month, "/", day, "/", year, " ", hour, ":", minutes, ":", seconds];
+    console.log(formatDate);
+
+    this.state.ticketDate = formatDate;
+
+    this.setState({
+      ticketDate: formatDate,
+    });
+  };
+
   onSubmit = (event) => {
     event.preventDefault();
 
     const dbRef = firebase.database().ref();
 
+    this.onSubmitTimestamp();
+
     const rawObj = {
       name: this.state.ticketRequester,
-      subject: this.state.ticketSubject,
       description: this.state.ticketDescription,
       priority: this.state.ticketPriority,
+      date: this.state.ticketDate,
     };
+
+    console.log(rawObj);
 
     dbRef.push(rawObj);
 
     this.setState({
       ticketRequester: "",
-      ticketSubject: "",
       ticketDescription: "",
       ticketPriority: "",
+      ticketDate: "",
     });
-  };
-
-  onDelete = (ticketId) => {
-    const dbRef = firebase.database().ref();
-    dbRef.child(ticketId).remove();
   };
 
   render() {
     console.log("render method put some crap here");
     return (
-      <div className="App">
+      <div className="App wrapper">
         <h1>Create New Ticket Request</h1>
 
-        <table className='rwd-table'>
+        <table className="rwd-table">
           <thead>
             <tr>
               <th scope="col">Requester</th>
-              <th scope="col">Subject</th>
               <th scope="col">Description</th>
               <th scope="col">Priority</th>
-              <th scope="col">Completed</th>
+              <th scope="col">Date</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -127,13 +141,6 @@ class App extends Component {
             id="newRequester"
             onChange={this.onChangeTicketRequester}
             value={this.state.ticketRequester}
-          />
-          <label htmlFor="newSubject">Subject: </label>
-          <input
-            type="text"
-            id="newSubject"
-            onChange={this.onChangeTicketSubject}
-            value={this.state.ticketSubject}
           />
           <label htmlFor="newDescription">Description: </label>
           <input
