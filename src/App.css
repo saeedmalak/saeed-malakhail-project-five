@@ -1,5 +1,7 @@
-.App {
-  text-align: center;
+.wrapper {
+  max-width: 1280px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .App-logo {
@@ -28,14 +30,93 @@
   color: #61dafb;
 }
 
-.App > form:nth-child(3) {
-margin-top: 40px;
+/* Style the form  */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
 }
 
-.wrapper {
-	max-width: 1280px;
-	width: 90%;
-	margin: 0 auto;
+label[for="newRequester"] {
+  margin-bottom: 10px;
+}
+
+#newRequester {
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+#newDescription {
+  width: 50%;
+  margin-bottom: 20px;
+  resize: none;
+}
+
+label[for="newDescription"] {
+  margin-bottom: 10px;
+}
+
+.priority-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.priority-container p {
+	margin: 0 0 10px 0;
+}
+
+.priority-items {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+#newPriorityLow {
+	margin-left: 0;
+}
+
+#newPriorityMedium {
+  margin-left: 60px;
+}
+
+#newPriorityHigh {
+  margin-left: 60px;
+}
+
+form button {
+  width: 15%;
+  border-top: 1px solid #96d1f8;
+  background-color: #2090db;
+  background: linear-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#3e779d),
+    to(#65a9d7)
+  );
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 25px;
+  font-family: Helvetica, Arial, Sans-Serif;
+}
+
+form button:hover {
+  border-top-color: #28597a;
+  background: #28597a;
+  color: #ccc;
+}
+form button:active {
+  border-top-color: #1b435e;
+  background: #1b435e;
+}
+
+/* style sweetalerts  */
+.swal-overlay {
+  background-color: rgba(43, 165, 137, 0.45);
+}
+
+.swal-text {
+	text-align: center;
 }
 
 /* spacing */
@@ -67,18 +148,20 @@ thead th:nth-child(5) {
   width: 10%;
 }
 
-th, td {
+th,
+td {
   padding: 20px;
 }
 
 /* typography */
 
 html {
-  font-family: 'helvetica neue', helvetica, arial, sans-serif;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
 }
 
-thead th, tfoot th {
-     font-family: 'Roboto', sans-serif;
+thead th,
+tfoot th {
+  font-family: "Roboto", sans-serif;
 }
 
 th {
@@ -96,12 +179,12 @@ tbody td {
 /* zebra striping */
 
 thead {
-	background-color: #508abb;
-	color: #fffffc;
+  background-color: #508abb;
+  color: #fffffc;
 }
 
 tbody {
-	color: black;
+  color: black;
 }
 
 tbody tr:nth-child(odd) {
@@ -114,15 +197,14 @@ tbody tr:nth-child(even) {
 
 @media screen and (min-width: 780px) {
   tbody tr:hover {
-	/* your hover state style rules */
-	background-color: yellow;
+    /* your hover state style rules */
+    background-color: yellow;
   }
 }
 
 /* RESPONSIVE TABLE DESIGN  */
 
-
- /* .rwd-table {
+/* .rwd-table {
 	 margin: 1em 0;
 	 min-width: 300px;
 }
