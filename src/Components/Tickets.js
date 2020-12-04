@@ -53,6 +53,12 @@ class Tickets extends Component {
     });
   }
 
+  // this was necessary to get rid of the 'memory leakage' error in the console. Remove connection between firebase and app 
+  componentWillUnmount() {
+    const dbRef = firebase.database().ref();
+    dbRef.off('value');
+  }
+
   // create a nice formatted table with 5 columns and output all the tickets by mapping through the ticketsArray
   render() {
     return (
