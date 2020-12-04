@@ -349,9 +349,9 @@ tbody tr:nth-child(even) {
     margin-top: 0;
     z-index: 10;
     width: 40%; 
-    right: -40%; 
+    left: -40%; 
     top: 0;
-    height: 35%;
+    height: 50%;
     transition: all 0.5s; 
   }
 
@@ -369,7 +369,7 @@ tbody tr:nth-child(even) {
   }
 
   nav input[type="checkbox"]:checked + .navList {
-	  right: 0;  
+	  left: 0;  
   }
 
   nav input[type="checkbox"] {
@@ -379,8 +379,8 @@ tbody tr:nth-child(even) {
   nav label[for="toggle"] {
 	  position: fixed;
 	  top: 10px;
-	  left: 10px;
-	  color: black;
+	  right: 10px;
+	  color: #22512b;
 	  z-index: 10;  
   }
 
@@ -393,8 +393,7 @@ tbody tr:nth-child(even) {
 @media screen and (max-width: 600px) {
   .navList {
     width: 50%;
-    right: -50%;
-    height: 30%;
+    left: -50%;
   }
 
   .navList a {
@@ -406,7 +405,7 @@ tbody tr:nth-child(even) {
 @media screen and (max-width: 480px) {
   .navList {
     width: 75%;
-    right: -75%;
+    left: -75%;
     padding: 20px 0;
   }
 
