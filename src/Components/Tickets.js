@@ -14,9 +14,26 @@ class Tickets extends Component {
 
   // this is where we listen to firebase and extract all the values in a formatted array of objects along with the firebase generated unique IDs.
   componentDidMount() {
+
+    // check to see if we are connected to firebase, otherwise alert the user acccordingly! 
+    let connectedRef = firebase.database().ref(".info/connected");
+    connectedRef.on("value", function(snap) {
+      if (snap.val() === true) {
+      } else {
+        swal(
+        `It looks like we have lost connection to our database, please double check your internet or try back some other time.`,
+        {
+          icon: "warning",
+          buttons: false,
+          timer: 2500,
+        }
+      );
+      }
+    });
+
     const dbRef = firebase.database().ref();
 
-    dbRef.on("value", (data) => {
+      dbRef.on("value", (data) => {
       const firebaseDataObj = data.val();
 
       let ticketsArray = [];

@@ -10,7 +10,7 @@ class Nav extends Component {
             <img src={logo} width="100" height="100" alt="Bug Tracking App Logo"/>
             <nav>
                 <label htmlFor="toggle"><i className="fa fa-bars"></i> Menu</label>
-                <input type="checkbox" id="toggle" name="toggle" />
+                <input type="checkbox" id="toggle" name="toggle"/>
                 <ul className="navList">
                     <li>
                         <NavLink activeClassName="active" exact to="/">Home</NavLink>
