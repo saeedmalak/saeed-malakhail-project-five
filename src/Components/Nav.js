@@ -1,7 +1,6 @@
 import { Component, Fragment} from 'react';
 import { NavLink } from "react-router-dom";
 import logo from "../logo.png";
-import Tickets from './Tickets';
 
 // creates the navigation with the Home, Create Tickets, and Tickets page views allowing the user to smoothly navigate between the different pages. 
 class Nav extends Component {
